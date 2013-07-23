@@ -8,6 +8,10 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    #when link clicked, params[:sort] becomes available, @movies sorted
+    @movies = Movie.order(params[:sort])
+    #equivalent as above
+    #@movies = Movie.all(:order => params[:sort])
   end
 
   def new
