@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  
+
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
@@ -8,26 +8,20 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    #if params[:ratings].present?
-    #  @selected = params[:ratings].keys
-    #  #session[:ratings] = @selected
-    #elsif  session[:ratings].present?
-    #  @selected = session[:ratings]
-    #else
-    #  @seletecd = @all_ratings
-    #end
-    #session[:ratings] = @selected
     @all_ratings = Movie.ratings
-    if params[:ratings].nil?                           #first visit
-      @selected = @all_ratings                         #default all checked
-      condition = { :rating => @all_ratings }          #no restrict for ratings
-    else                                               #then ratings selected
-      @selected = params[:ratings]                     #remain checked after refresh
-      condition = { :rating => params[:ratings].keys } #rating restrict
+    if params[:ratings].nil? && session[:ratings].nil?
+      params[:ratings] = Hash[@all_ratings.map {|x| [x, 1]}]
     end
-    #when sort link clicked, params[:sort] becomes available, sort != nil
-    sort = params[:sort]                               #sort choice    
-    @movies = Movie.order(sort).where(condition)       #sort can be nil, condition can't
+    if params[:ratings].nil? && params[:sort].nil?
+      params[:ratings] = session[:ratings]
+      params[:sort] = session[:sort]
+      flash.keep
+      redirect_to movies_path(:sort => session[:sort], :ratings => params[:ratings])
+    end
+    @selected = params[:ratings]
+    session[:ratings] = params[:ratings]
+    session[:sort] = params[:sort]
+    @movies = Movie.order(params[:sort]).where(:rating => params[:ratings].keys)       #sort can be nil, condition can't
     #debugger                                           #very useful!!!!!
   end
 
