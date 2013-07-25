@@ -7,4 +7,8 @@ module MoviesHelper
   def hilite?(column_name)
     "hilite" if params[:sort] == column_name
   end
+
+  def sel
+    
+  end
 end
