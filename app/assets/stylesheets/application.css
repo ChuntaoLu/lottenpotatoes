@@ -56,6 +56,12 @@ table#movies th.hilite {
   margin: 1em 0;
   padding: 4px;
 }
+/*css the notice message*/
+#notice.message {
+  color: red;
+  text-align: center;
+  padding: 4px;
+}
 form label {
   display: block;
   line-height: 25px;
