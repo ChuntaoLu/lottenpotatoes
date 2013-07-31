@@ -13,7 +13,8 @@ div#main {
 a {
   background: transparent;
   color: maroon;
-  text-decoration: underline;
+  text-decoration: none;
+  /*text-decoration: underline;*/
   font-weight: bold;
 }
 h1 {
@@ -32,6 +33,7 @@ h1.title {
   border-bottom: 4px solid gold;
   font-size: 2em;
   font-style: normal;
+  text-decoration: none;
 }
 table#movies {
   margin: 10px;
@@ -43,6 +45,9 @@ table#movies th {
   border: 2px solid white;
   font-weight: bold;
   background-color: wheat;
+}
+table#movies tr:hover {
+  background-color: yellow;
 }
 table#movies th, table#movies td {
   padding: 4px;
