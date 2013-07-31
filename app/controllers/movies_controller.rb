@@ -18,6 +18,8 @@ class MoviesController < ApplicationController
       flash.keep
       redirect_to movies_path(:sort => session[:sort], :ratings => params[:ratings])
     end
+    #debug method in controller(only):
+    #raise params.inspect
     @selected = params[:ratings]
     session[:ratings] = params[:ratings]
     session[:sort] = params[:sort]
@@ -30,7 +32,9 @@ class MoviesController < ApplicationController
   end
 
   def create
+    #debugger
     @movie = Movie.create!(params[:movie])
+    #raise params[:movie].inspect
     flash[:notice] = "#{@movie.title} was successfully created."
     redirect_to movies_path
   end
