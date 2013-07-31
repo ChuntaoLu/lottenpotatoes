@@ -7,7 +7,9 @@
     = csrf_meta_tags
 
   %body
-    %h1.title Rotten Potatoes!
+    /make the whole banner a link
+    = link_to(movies_path) do  
+      %h1.title Rotten Potatoes
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]

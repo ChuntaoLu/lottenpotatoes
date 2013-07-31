@@ -12,6 +12,7 @@
 %table#movies
   %thead
     %tr
+      %th No.
       /haml add class to element-- th{:class => someclass}  
       %th{:class => hilite?('title')}
         /two keys passed, params[:sort] and params[:ratings] become available 
@@ -26,8 +27,9 @@
       /%th Edit
       /%th Delete
   %tbody
-    - @movies.each do |movie|
+    - @movies.each_with_index do |movie, row_number|
       %tr
+        %td= row_number + 1
         %td= movie.title
         %td= movie.rating
         %td= movie.release_date
