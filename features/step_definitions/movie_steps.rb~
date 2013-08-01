@@ -7,11 +7,6 @@ Given /I have added "(.*)" with rating "(.*)"/ do |title, rating|
   }
 end
 
-#Then /I should see "(.*)" before "(.*)" on (.*)/ do |string1, string2, path|
-#  step "I am on #{path}"
-#  regexp = /#{string1}.*#{string2}/m #  /m means match across newlines
-#  page.body.should =~ regexp
-#end
 
 # Add a declarative step here for populating the DB with movies.
 

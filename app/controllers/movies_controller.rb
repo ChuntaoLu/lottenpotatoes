@@ -12,7 +12,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
     @all_ratings = Movie.ratings
     #----------------workable but urgly code-------------------------
     #sort = params[:ratings].nil? ? session[:sort] : params[:ratings]
@@ -28,7 +27,7 @@ class MoviesController < ApplicationController
     # || returns the most left operand if it's true
     sort = params[:sort] || session[:sort]
     @selected = params[:ratings] || session[:ratings] || {}
-    if @selected = {}
+    if @selected == {}
       @selected = params[:ratings] = Hash[@all_ratings.map {|x| [x, 1]}]
     end
     if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
