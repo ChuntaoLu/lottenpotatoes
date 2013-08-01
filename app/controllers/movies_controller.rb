@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
 
   def show
     id = params[:id] # retrieve movie ID from URI route
-    begin 
+    begin
       @movie = Movie.find(id) # look up movie by unique ID
     rescue
       flash[:notice] = 'Sorry, no such a movie with the given id.'
@@ -14,22 +14,34 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
     @all_ratings = Movie.ratings
-    if params[:ratings].nil? && session[:ratings].nil?
-      params[:ratings] = Hash[@all_ratings.map {|x| [x, 1]}]
+    #----------------workable but urgly code-------------------------
+    #sort = params[:ratings].nil? ? session[:sort] : params[:ratings]
+    #@selected = params[:ratings]
+    #if @selected.nil?
+    #  if session[:ratings].nil?
+    #    @selected = Hash[@all_ratings.map {|x| [x, 1]}]
+    #  else
+    #    @selected = session[:ratings]
+    #  end
+    #end
+    #----------------------------------------------------------------
+    # || returns the most left operand if it's true
+    sort = params[:sort] || session[:sort]
+    @selected = params[:ratings] || session[:ratings] || {}
+    if @selected = {}
+      @selected = params[:ratings] = Hash[@all_ratings.map {|x| [x, 1]}]
     end
-    if params[:ratings].nil? && params[:sort].nil?
-      params[:ratings] = session[:ratings]
-      params[:sort] = session[:sort]
-      flash.keep
-      redirect_to movies_path(:sort => session[:sort], :ratings => params[:ratings])
+    if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
+      session[:sort] = sort
+      session[:ratings] = @selected
+      #flash.keep
+      redirect_to :sort => sort, :ratings => @selected and return
     end
-    #debug method in controller(only):
-    #raise params.inspect
-    @selected = params[:ratings]
-    session[:ratings] = params[:ratings]
-    session[:sort] = params[:sort]
-    @movies = Movie.order(params[:sort]).where(:rating => params[:ratings].keys)       #sort can be nil, condition can't
-    #debugger                                           #very useful!!!!!
+    @movies = Movie.order(sort).where(:rating => @selected.keys)
+    #----------------debug options---------------
+    #raise params.inspect   #in controller(only):
+    #debugger
+    #--------------------------------------------
   end
 
   def new
@@ -41,8 +53,8 @@ class MoviesController < ApplicationController
     @movie = Movie.create!(params[:movie])
     #raise params[:movie].inspect
     flash[:notice] = "#{@movie.title} was successfully created."
-    #redirect_to movies_path
-    redirect_to movie_path(@movie)
+    redirect_to movies_path
+    #redirect_to movie_path(@movie)
   end
 
   def edit
@@ -61,6 +73,23 @@ class MoviesController < ApplicationController
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
+  end
+
+  def search_tmdb
+    # hardwire to simulate failure
+    title = params[:search_terms]
+    if title == ''
+      flash[:warning] = 'No title given.'
+      redirect_to movies_path
+    else
+      @movie = Movie.find_by_title(title)
+      if @movie.present?
+        redirect_to movie_path(@movie)
+      else
+        flash[:warning] = "'#{title}' was not found in TMDb."
+        redirect_to movies_path
+      end
+    end
   end
 
 end
