@@ -11,14 +11,12 @@ group :development, :test do
   gem 'debugger'  
   #gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'database_cleaner'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'rspec-rails'
 end
 group :test do
   gem 'cucumber-rails', :require => false
-  gem 'rspec-rails'
   gem 'ZenTest'
   gem 'cucumber-rails-training-wheels'
 end
@@ -36,6 +34,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'ruby-tmdb'
 
 # Use unicorn as the web server
 # gem 'unicorn'
