@@ -7,6 +7,7 @@ gem 'rails', '3.1.0'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
+  gem 'simplecov', :require => false
   gem 'sqlite3'
   gem 'debugger'  
   #gem 'ruby-debug19', :require => 'ruby-debug'

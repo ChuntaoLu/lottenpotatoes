@@ -4,11 +4,11 @@ Scenario: Add a movie
   Given I am on the RottenPotatoes home page
   When I follow "Add new movie"
   Then I should be on the Create New Movie page
-  When I fill in "Title" with "Men In Black"
+  When I fill in "Title" with "Apocalypse Now"
   And I select "PG-13" from "Rating"
   And I press "Save Changes"
   Then I should be on the RottenPotatoes home page
-  And I should see "Men In Black"
+  And  I should see "Apocalypse Now"
 
 # for suggested project 5.1
 #  When I fill in "Title" with "Men In Black"

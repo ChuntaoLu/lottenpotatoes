@@ -6,15 +6,12 @@ class Movie < ActiveRecord::Base
     "e3a578cf327f30d51162d8aee30b78df"    
   end
 
-  def self.ratings
-    out = []
-    self.all.each do |movie| 
-      out << movie[:rating]
-    end
-    out.uniq
+  def self.all_ratings
+    out = %w(G PG PG-13 NC-17 R)
   end
 
   def self.find_in_tmdb(string)
+    Tmdb.api_key = self.api_key
     begin
       TmdbMovie.find(:title => string)
     rescue ArgumentError => tmdb_error

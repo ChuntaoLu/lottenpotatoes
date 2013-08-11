@@ -5,8 +5,8 @@
   Include:
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", 1, @selected.include?(rating)
-    /check if @selected includes rating, if so, checkbox is checked
+    = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating)
+    /check if @selected_ratings includes rating, if so, checkbox is checked
   = submit_tag 'Refresh', :id => 'ratings_submit'
 
 %table#movies
@@ -16,12 +16,12 @@
       /haml add class to element-- th{:class => someclass}  
       %th{:class => hilite?('title')}
         /two keys passed, params[:sort] and params[:ratings] become available 
-        = link_to "Movie Title", movies_path(:sort => 'title', :ratings => @selected),
+        = link_to "Movie Title", movies_path(:sort => 'title', :ratings => @selected_ratings),
         :id => 'title_header'
       %th Rating
       /hilite? helper method defined in movies_helper.rb
       %th{:class => hilite?('release_date')}
-        = link_to "Release Date", movies_path(:sort=> 'release_date', :ratings => @selected),
+        = link_to "Release Date", movies_path(:sort=> 'release_date', :ratings => @selected_ratings),
         :id => 'release_date_header'
       %th More Info
 

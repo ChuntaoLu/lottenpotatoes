@@ -31,7 +31,7 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
   #flunk "Unimplemented"
-  regex = /#{e1}.*#{e2}/m
+  regex = Regexp.new(/#{e1}.*#{e2}/m)
   page.body.should =~ regex
 end
 

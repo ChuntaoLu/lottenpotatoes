@@ -13,31 +13,31 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @all_ratings = Movie.ratings
+    @all_ratings = Movie.all_ratings
     #----------------workable but urgly code-------------------------
     #sort = params[:ratings].nil? ? session[:sort] : params[:ratings]
-    #@selected = params[:ratings]
-    #if @selected.nil?
+    #@selected_ratings = params[:ratings]
+    #if @selected_ratings.nil?
     #  if session[:ratings].nil?
-    #    @selected = Hash[@all_ratings.map {|x| [x, 1]}]
+    #    @selected_ratings = Hash[@all_ratings.map {|x| [x, 1]}]
     #  else
-    #    @selected = session[:ratings]
+    #    @selected_ratings = session[:ratings]
     #  end
     #end
     #----------------------------------------------------------------
     # || returns the most left operand if it's true
     sort = params[:sort] || session[:sort]
-    @selected = params[:ratings] || session[:ratings] || {}
-    if @selected == {}
-      @selected = params[:ratings] = Hash[@all_ratings.map {|x| [x, 1]}]
+    @selected_ratings = params[:ratings] || session[:ratings] || {}
+    if @selected_ratings == {}
+      @selected_ratings  = Hash[@all_ratings.map {|rating| [rating, 1]}]
     end
     if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
       session[:sort] = sort
-      session[:ratings] = @selected
-      #flash.keep
-      redirect_to :sort => sort, :ratings => @selected and return
+      session[:ratings] = @selected_ratings
+      flash.keep
+      redirect_to :sort => sort, :ratings => @selected_ratings and return
     end
-    @movies = Movie.order(sort).where(:rating => @selected.keys)
+    @movies = Movie.order(sort).where(:rating => @selected_ratings.keys)
     #----------------debug options---------------
     #raise params.inspect   #in controller(only):
     #debugger
