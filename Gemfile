@@ -9,9 +9,11 @@ gem 'rails', '3.1.0'
 group :development, :test do
   gem 'simplecov', :require => false
   gem 'sqlite3'
-  gem 'debugger'  
+  gem 'debugger'
   #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'factory_girl'
   gem 'capybara'
   gem 'launchy'
   gem 'rspec-rails'

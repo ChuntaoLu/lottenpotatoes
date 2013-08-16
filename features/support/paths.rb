@@ -20,15 +20,20 @@ module NavigationHelpers
     when /^the Create New Movie page/
       '/movies/new'
     when /^the "Search Results" page/
-      '/movies'
-    when /^the Show Movie page/
-      '/movies/:id'
+      '/movies/search_tmdb'
+    when /^the edit page for "(.*)"/
+      #"/movies/#{Movie.find_by_title($1)}/edit"
+      edit_movie_path(Movie.find_by_title($1))
+    when /^the details page for "(.*)"/
+      #"/movies/#{Movie.find_by_title($1)}"
+      movie_path(Movie.find_by_title($1))
+    when /^the Similar Movies page for "(.*)"/
+      similar_movies_path(Movie.find_by_title($1))
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
     else
       begin
         page_name =~ /^the (.*) page$/

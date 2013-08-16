@@ -1,5 +1,5 @@
 Feature: User can manually add movie
-
+    
 Scenario: Add a movie
   Given I am on the RottenPotatoes home page
   When I follow "Add new movie"

@@ -1,2 +1,22 @@
-= @movies.each do |movie| 
-  = movie.name
+%table#movies
+  %thead
+    %tr
+      %th No.
+      %th Movie Title
+      %th Rating
+      /%th Director
+      %th Release Date
+      %th Star
+      %th More Info
+
+  %tbody
+    - @movies.each_with_index do |movie, row_number|
+      %tr
+        %td= row_number + 1
+        %td= movie.name
+        %td= movie.certification.blank? ? 'Not rated' : movie.certification
+        /%td= movie.director
+        %td= movie.released.blank? ? 'Unknown' : movie.released
+        %td= movie.rating
+        %td= link_to "More about #{movie.name}", movie.url
+= link_to "Back to movie list", movies_path

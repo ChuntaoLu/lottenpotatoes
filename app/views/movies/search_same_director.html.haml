@@ -1,0 +1,20 @@
+%table#movies
+  %thead
+    %tr
+      %th No.
+      %th Movie Title
+      %th Rating
+      %th Director
+      %th Release Date
+      %th More Info
+
+  %tbody
+    - @similar_movies.each_with_index do |movie, row_number|
+      %tr
+        %td= row_number + 1
+        %td= movie.title
+        %td= movie.rating
+        %td= movie.director
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+= link_to "Back to movie list", movies_path

@@ -67,4 +67,9 @@ end
 #    And   I press "Delete"
 #    And   I confirm popup
 #  }
-#end
+
+
+Then /the director of "(.*)" should be "(.*)"/ do |title, director|
+  regex = /#{title}.*Director:\s?#{director}/m
+  page.body.should =~ regex
+end

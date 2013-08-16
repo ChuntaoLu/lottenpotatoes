@@ -1,13 +1,14 @@
 class Movie < ActiveRecord::Base
-  
+
   class Movie::InvalidKeyError < StandardError ; end
-  
+  class Movie::NoDirectorError < StandardError ; end
+
   def self.api_key
-    "e3a578cf327f30d51162d8aee30b78df"    
+    "e3a578cf327f30d51162d8aee30b78df"
   end
 
   def self.all_ratings
-    out = %w(G PG PG-13 NC-17 R)
+    %w(G PG PG-13 NC-17 R)
   end
 
   def self.find_in_tmdb(string)
@@ -26,4 +27,12 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  def self.find_same_director(id)
+    movie = self.find(id)
+    if movie.director.nil? or movie.director.blank?
+      raise Movie::NoDirectorError, "'#{movie.title}' has no director info"
+    else
+      self.find_all_by_director(movie.director)
+    end
+  end
 end

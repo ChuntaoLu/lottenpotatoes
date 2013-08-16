@@ -7,7 +7,7 @@ module MoviesHelper
   def hilite?(column_name)
     "hilite" if params[:sort] == column_name
   end
-  # cancel when edit or add new movie
+  #cancel when edit or add new movie
   def cancel
     link_to 'Cancal', @movie.nil? ? movies_path : movie_path(@movie)
   end

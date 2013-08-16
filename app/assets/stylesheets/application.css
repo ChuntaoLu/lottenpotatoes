@@ -62,8 +62,13 @@ table#movies th.hilite {
   padding: 4px;
 }
 /*css the notice message*/
-#notice.message {
+#warning.message {
   color: red;
+  text-align: center;
+  padding: 4px;
+}
+#notice.message {
+  color: green;
   text-align: center;
   padding: 4px;
 }

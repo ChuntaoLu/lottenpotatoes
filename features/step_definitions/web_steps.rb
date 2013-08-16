@@ -234,6 +234,7 @@ end
  
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
+  #puts page.body
   if current_path.respond_to? :should
     current_path.should == path_to(page_name)
   else
@@ -260,9 +261,7 @@ end
 
 
 When /^I confirm popup$/ do
-  #page.driver.browser.switch_to.alert.accept
-  page.evaluate_script('window.confirm = function() { return true; }')
-  page.click('Remove')
+  page.driver.browser.switch_to.alert.accept
 end
 
 When /^I dismiss popup$/ do
