@@ -15,13 +15,13 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.all_ratings
     #----------------workable but ugly code-------------------------
-    #sort = params[:ratings].nil? ? session[:sort] : params[:ratings]
+    #sort = params[:ratings].nil? ? sessions[:sort] : params[:ratings]
     #@selected_ratings = params[:ratings]
     #if @selected_ratings.nil?
-    #  if session[:ratings].nil?
+    #  if sessions[:ratings].nil?
     #    @selected_ratings = Hash[@all_ratings.map {|x| [x, 1]}]
     #  else
-    #    @selected_ratings = session[:ratings]
+    #    @selected_ratings = sessions[:ratings]
     #  end
     #end
     #----------------------------------------------------------------
@@ -37,9 +37,9 @@ class MoviesController < ApplicationController
     if @selected_ratings == {}
       @selected_ratings  = Hash[@all_ratings.map {|rating| [rating, 1]}]
     end
-    #if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
-    #  session[:sort] = sort
-    #  session[:ratings] = @selected_ratings
+    #if params[:sort] != sessions[:sort] or params[:ratings] != sessions[:ratings]
+    #  sessions[:sort] = sort
+    #  sessions[:ratings] = @selected_ratings
     #  flash.keep
     #  redirect_to :sort => sort, :ratings => @selected_ratings and return
     #end
@@ -67,24 +67,44 @@ class MoviesController < ApplicationController
     # default: render 'new' template
   end
 
+#  def create
+#    #debugger
+#    @movie = Movie.create!(params[:movie])
+#    #raise params[:movie].inspect
+#    flash[:notice] = "#{@movie.title} was successfully created."
+#    redirect_to movies_path
+#    #redirect_to movie_path(@movie)
+#  end
+
   def create
-    #debugger
-    @movie = Movie.create!(params[:movie])
-    #raise params[:movie].inspect
-    flash[:notice] = "#{@movie.title} was successfully created."
-    redirect_to movies_path
-    #redirect_to movie_path(@movie)
+    @movie = Movie.new(params[:movie])
+    if @movie.save
+      flash[:notice] = "#{@movie.title} was successfully created."
+      redirect_to movies_path
+    else
+      render 'new' # note, 'new' template can access @movie's field values!
+    end
   end
 
   def edit
+    #todo show directer on edit page
     @movie = Movie.find params[:id]
   end
 
+#  def update
+#    @movie = Movie.find params[:id]
+#    @movie.update_attributes!(params[:movie])
+#    flash[:notice] = "#{@movie.title} was successfully updated."
+#    redirect_to movie_path(@movie)
+#  end
   def update
     @movie = Movie.find params[:id]
-    @movie.update_attributes!(params[:movie])
-    flash[:notice] = "#{@movie.title} was successfully updated."
-    redirect_to movie_path(@movie)
+    if @movie.update_attributes(params[:movie])
+      flash[:notice] = "#{@movie.title} was successfully updated."
+      redirect_to movie_path(@movie)
+    else
+      render 'edit' # note, 'edit' template can access @movie's field values!
+    end
   end
 
   def destroy
@@ -109,6 +129,7 @@ class MoviesController < ApplicationController
       redirect_to movies_path and return
     end
   end
+
 
   def search_same_director
     begin

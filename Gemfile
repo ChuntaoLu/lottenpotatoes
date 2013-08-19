@@ -17,6 +17,8 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rspec-rails'
+  gem 'omniauth-twitter', '~> 1.0'
+  gem 'omniauth-facebook', "~> 1.0"
 end
 group :test do
   gem 'cucumber-rails', :require => false

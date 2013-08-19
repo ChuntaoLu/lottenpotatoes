@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/environment.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/application.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/application.rb": [
         1,
         null,
         null,
@@ -64,7 +64,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/boot.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/boot.rb": [
         1,
         null,
         null,
@@ -72,7 +72,7 @@
         null,
         1
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/environments/test.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/environments/test.rb": [
         1,
         null,
         null,
@@ -116,7 +116,7 @@
         1,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/initializers/backtrace_silencers.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -125,7 +125,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/initializers/inflections.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -137,14 +137,14 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/initializers/mime_types.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/initializers/secret_token.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/initializers/secret_token.rb": [
         null,
         null,
         null,
@@ -153,7 +153,7 @@
         null,
         1
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/initializers/session_store.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/initializers/session_store.rb": [
         null,
         null,
         1,
@@ -163,7 +163,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/initializers/wrap_parameters.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -179,16 +179,16 @@
         1,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/app/controllers/application_controller.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/app/helpers/application_helper.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/app/helpers/movies_helper.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/app/helpers/movies_helper.rb": [
         1,
         null,
         1,
@@ -204,7 +204,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/app/controllers/movies_controller.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/app/controllers/movies_controller.rb": [
         1,
         null,
         null,
@@ -329,7 +329,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/app/models/movie.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/app/models/movie.rb": [
         1,
         null,
         1,
@@ -369,7 +369,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/config/routes.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/config/routes.rb": [
         1,
         null,
         null,
@@ -435,7 +435,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/spec/factories/movie.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/spec/factories/movie.rb": [
         null,
         1,
         1,
@@ -445,7 +445,7 @@
         null,
         null
       ],
-      "/Users/luffy/Dropbox/edx/cs169/hw2_rottenpotatoes/spec/models/movie_spec.rb": [
+      "/home/lu/win-vb/edx_cs169/hw2_rottenpotatoes/spec/models/movie_spec.rb": [
         1,
         null,
         null,
@@ -503,6 +503,6 @@
         null
       ]
     },
-    "timestamp": 1376449079
+    "timestamp": 1376749996
   }
 }

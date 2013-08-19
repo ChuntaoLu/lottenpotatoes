@@ -22,6 +22,8 @@
 
 = link_to 'Edit', edit_movie_path(@movie)
 = button_to 'Delete', movie_path(@movie), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Add Review', new_movie_review_path(@movie)
+%br
 = link_to 'Find Movies With Same Director', similar_movies_path(@movie)
 %br
 = link_to 'Back to movie list', movies_path

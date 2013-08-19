@@ -7,6 +7,7 @@
     = csrf_meta_tags
 
   %body
+    = render :partial => 'sessions/login'
     /make the whole banner a link
     = link_to(movies_path) do  
       %h1.title Rotten Potatoes

@@ -12,7 +12,7 @@
 %table#movies
   %thead
     %tr
-      %th No.
+      %th ID
       /haml add class to element-- th{:class => someclass}  
       %th{:class => hilite?('title')}
         /two keys passed, params[:sort] and params[:ratings] become available 
@@ -26,13 +26,14 @@
       %th More Info
 
   %tbody
-    - @movies.each_with_index do |movie, row_number|
-      %tr
-        %td= row_number + 1
-        %td= movie.title
-        %td= movie.rating
-        %td= movie.release_date
-        %td= link_to "More about #{movie.title}", movie_path(movie)
+    = render :partial => 'movie', :collection => @movies
+    -#- @movies.each_with_index do |movie|
+    -#  %tr
+    -#    %td= movie.id
+    -#    %td= movie.title
+    -#    %td= movie.rating
+    -#    %td= movie.release_date
+    -#    %td= link_to "More about #{movie.title}", movie_path(movie)
 
 = link_to 'Add new movie', new_movie_path
 

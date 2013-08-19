@@ -12,13 +12,19 @@ Rottenpotatoes::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :movies
+  resources :movies do
+    resources :reviews
+  end
   post '/movies/search_tmdb'
   # ':as => :director' assigns the 'same_director_path' to search_same_director view
   # dynamic route naming makes path requires parameter, check out params
   match 'movies/:id/similar_movies' => 'movies#search_same_director', :as => :similar_movies
   #check out http://edgeguides.rubyonrails.org/routing.html
   root :to => 'movies#index'
+  #match 'auth/:provider/callback' => 'sessions#create', :as => 'login'
+  match 'auth/:provider' => 'sessions#create', :as => 'login'
+  match 'auth/:provider/callback' => 'sessions#create'
+  match 'logout' => 'sessions#destroy'
   # Sample resource route with options:
   #   resources :products do
   #     member do
