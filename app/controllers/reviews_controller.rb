@@ -78,5 +78,6 @@ public
       redirect_to movie_reviews_path(@movie)
     end
   end
+
 end
 
