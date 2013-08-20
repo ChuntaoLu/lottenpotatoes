@@ -1,0 +1,19 @@
+%h2= "My Review for #{@movie.title}"
+%ul#details
+  %li
+    Moviegoer:
+    = @review.moviegoer.name
+  %li
+    Potatoes:
+    = @review.potatoes
+  %li
+    Comments:
+    = @review.comments
+
+%br
+= link_to 'Edit', edit_movie_review_path(@movie, @review)
+= button_to 'Delete', movie_review_path(@movie, @review), :method => :delete, :confirm => 'Are you sure?'
+%br
+= link_to 'Back to reviews list', movie_reviews_path(@movie)
+%br
+= link_to 'Back to movies list', movies_path

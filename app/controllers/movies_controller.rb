@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     #if @selected_ratings.nil?
     #  if sessions[:ratings].nil?
     #    @selected_ratings = Hash[@all_ratings.map {|x| [x, 1]}]
-    #  else
+  #  else
     #    @selected_ratings = sessions[:ratings]
     #  end
     #end

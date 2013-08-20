@@ -1,0 +1,23 @@
+%h2= "Reviews for #{@movie.title}"
+
+/todo ccs for reviews
+%table#reviews
+  %thead
+    %tr
+      %th Moviegoer
+      %th Potatoes
+      %th Comments
+
+  %tbody
+    =render :partial => 'review', :collection => @reviews
+
+%br
+- unless @review.nil?
+  = link_to 'Show my review', movie_review_path(@movie, @review)
+-#  = link_to 'Edit my review', edit_movie_review_path(@movie, @review)
+%br
+= link_to 'Add Review', new_movie_review_path(@movie)
+%br
+= link_to 'Back to movie', movie_path(@movie)
+%br
+= link_to 'Back to movies list', movies_path
